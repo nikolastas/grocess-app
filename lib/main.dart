@@ -13,21 +13,15 @@ class Home extends StatelessWidget{
       centerTitle: true,
       backgroundColor: Color.fromARGB(150, 12, 0, 179)
     ),
-    body: Center(
-      child: Text(
-        'hello, ninjas!',
-        style: TextStyle(
-          fontSize: 50.0,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2.0,
-          color: Colors.grey[600],
-          fontFamily: 'IndieFlower',
-        ),
-      ),
+    body: Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 30.0),
+      color: Colors.grey[400],
+      child: Text('hello'),
+       
     ),
     floatingActionButton: FloatingActionButton(
       backgroundColor: Colors.red[600],
-      onPressed: () { print("clicked"); },
+      onPressed: () {  },
       child: Text('click'),
     ),
   );
