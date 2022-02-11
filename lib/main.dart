@@ -1,28 +1,35 @@
+import 'package:flutter/material.dart';
 
-void main() {
-User user1 = User('nikos', 30);
-print(user1.age);
-user1.login();
+void main() => runApp(MaterialApp(
+  home: Home()
+));
 
-User user2 = User('kok', 16);
-print(user2.username);
-}
-
-class User {
-  String username='' ;
-  int age=-1 ;
-  User(String username , int age){
-    this.username=username;
-    this.age=age;
-        
-  }
-  void login(){
-    print('user logged in');
-  }
-}
-class SuperUser extends User {
-  SuperUser(String username, int age): super(username, age);
-  void publish(){
-    print('published update');
+class Home extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    appBar: AppBar(
+      title: Text('my first app'),
+      centerTitle: true,
+      backgroundColor: Color.fromARGB(150, 12, 0, 179)
+    ),
+    body: Center(
+      child: Text(
+        'hello, ninjas!',
+        style: TextStyle(
+          fontSize: 50.0,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2.0,
+          color: Colors.grey[600],
+          fontFamily: 'IndieFlower',
+        ),
+      ),
+    ),
+    floatingActionButton: FloatingActionButton(
+      backgroundColor: Colors.red[600],
+      onPressed: () { print("clicked"); },
+      child: Text('click'),
+    ),
+  );
   }
 }
