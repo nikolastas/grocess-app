@@ -1,113 +1,72 @@
 import 'package:flutter/material.dart';
-
+import 'quote.dart';
 void main() => runApp(MaterialApp(
-  home: NinjaCrad(),
-));
+  home: QuoteList(),
+   ) 
+   );
 
-class NinjaCrad extends StatefulWidget {
+class QuoteList extends StatefulWidget {
+  const QuoteList({ Key? key }) : super(key: key);
+
   @override
-  State<NinjaCrad> createState() => _NinjaCradState();
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class _NinjaCradState extends State<NinjaCrad> {
-  int ninjaLevel = 0;
-
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote(text: 'You re Amazing buddy. ', author: 'Nikos'),
+    Quote(author: 'Oscar', text: 'If only school curriculum were like this'),
+    Quote(text: 'and teachers  were like you world could be', author: 'me')
+  ];
+  
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Ninja ID Card'),
+        title: Text('Awesome Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0,
+        backgroundColor : Colors.redAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-           ninjaLevel +=1; 
-           if (ninjaLevel >=5){
-             ninjaLevel = 0;
-           }
-          });
-      },
-      child: Icon(Icons.add),
-      backgroundColor: Colors.green[800],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/image1.jpg'),
-                radius: 50,
-              ),
-            ),
-            Divider(
-              height: 50,
-              color: Colors.green[600],
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.green[200],
-                letterSpacing: 2,
-              ),
-            ),
-            SizedBox( height:10),
-            Text(
-              'Nikos',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox( height:30),
-            Text(
-              'Level',
-              style: TextStyle(
-                color: Colors.green[200],
-                letterSpacing: 2,
-              ),
-            ),
-            SizedBox( height:10),
-            Text(
-              '$ninjaLevel',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox( 
-              height:30
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.email,
-                    color: Colors.green[100],
-                  ),
-                  SizedBox( width: 10),
-                  Text(
-                    'nikos@email.com',
-                    style: TextStyle(
-                      color: Colors.green[200],
-                      fontSize: 18,
-                      letterSpacing: 1
-                    ),
-                  )
-                ],
-              )
-          ],
-        ),
-      )
+      body: Column(
+        children: quotes.map( (quote) => QuoteCard(quote: quote)).toList(), 
+        )
     );
   }
 }
 
+class QuoteCard extends StatelessWidget {
+  
+
+  final Quote? quote;
+  QuoteCard({this.quote});
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[600],
+              )
+            ),
+            SizedBox(height: 6),
+            Text(
+              quote.author,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[900],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
