@@ -4,7 +4,14 @@ void main() => runApp(MaterialApp(
   home: NinjaCrad(),
 ));
 
-class NinjaCrad extends StatelessWidget {
+class NinjaCrad extends StatefulWidget {
+  @override
+  State<NinjaCrad> createState() => _NinjaCradState();
+}
+
+class _NinjaCradState extends State<NinjaCrad> {
+  int ninjaLevel = 0;
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -14,6 +21,18 @@ class NinjaCrad extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+           ninjaLevel +=1; 
+           if (ninjaLevel >=5){
+             ninjaLevel = 0;
+           }
+          });
+      },
+      child: Icon(Icons.add),
+      backgroundColor: Colors.green[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -49,7 +68,7 @@ class NinjaCrad extends StatelessWidget {
             ),
             SizedBox( height:30),
             Text(
-              'LASTNAME',
+              'Level',
               style: TextStyle(
                 color: Colors.green[200],
                 letterSpacing: 2,
@@ -57,7 +76,7 @@ class NinjaCrad extends StatelessWidget {
             ),
             SizedBox( height:10),
             Text(
-              'Tasiopoulos',
+              '$ninjaLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2,
@@ -91,3 +110,4 @@ class NinjaCrad extends StatelessWidget {
     );
   }
 }
+
