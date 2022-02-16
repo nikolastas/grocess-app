@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:camera/camera.dart';
 
-void main() => runApp(const MyApp());
+late List<CameraDescription> cameras;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  cameras = await availableCameras();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -24,6 +33,25 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  late CameraController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = CameraController(cameras[0], ResolutionPreset.max);
+    controller.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 12,
@@ -57,6 +85,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       _selectedIndex = index;
     });
     if (index == 2) {
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => CameraPreview(controller)));
       print("i am the camera tab");
     }
   }
