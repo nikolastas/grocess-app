@@ -118,7 +118,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   bottomRight: Radius.circular(23),
                 ),
                 image: DecorationImage(
-                    fit: BoxFit.fill, image: AssetImage('assets/logo.png')),
+                    fit: BoxFit.fill,
+                    image: AssetImage('assets/images/logo.png')),
                 color: Color.fromRGBO(253, 253, 255, 1),
               )),
         )
