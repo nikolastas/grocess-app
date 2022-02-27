@@ -22,7 +22,7 @@ class _Iphone13promaxsupportWidgetState extends State<Iphone13promaxsupportWidge
         Positioned(
           top: 72,
           left: 124,
-          child: AssetImage('assets/logo.png') //groccess img
+          child: AssetImage('assets/images/logo.png') //groccess img
         ),
         Positioned(
           top: 316,
