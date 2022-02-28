@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'card.dart';
 // class profile extends StatefulWidget {
 //   final List? widgetOptions1;
 //   final List? screens1;
@@ -42,7 +42,7 @@ class profile extends StatelessWidget {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-      // screens.elementAt(selectedIndex)
+      SmallcardWidget(),
     ]);
   }
 }

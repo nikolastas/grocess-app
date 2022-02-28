@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'card.dart';
 
 // class profile extends StatefulWidget {
 //   final List? widgetOptions1;
@@ -12,11 +13,11 @@ import 'package:flutter/material.dart';
 //   _profileState createState() => _profileState();
 // }
 
-class profile extends StatefulWidget {
+class statistics extends StatelessWidget {
   List widgetOptions;
   // List screens;
   final selectedIndex;
-  profile({required this.widgetOptions, this.selectedIndex});
+  statistics({required this.widgetOptions, this.selectedIndex});
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -42,13 +43,6 @@ class profile extends StatefulWidget {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-      // screens.elementAt(selectedIndex)
     ]);
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

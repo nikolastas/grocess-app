@@ -1,4 +1,8 @@
+import 'package:first_app_figma/Calender.dart';
+import 'package:first_app_figma/Camera.dart';
+import 'package:first_app_figma/Statistics.dart';
 import 'package:first_app_figma/bottomNavBar.dart';
+import 'Support.dart';
 import 'package:flutter/material.dart';
 import 'Profile.dart';
 
@@ -47,11 +51,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     fontFamily: 'Roboto',
   );
   List screens = [
-    profile(widgetOptions: _widgetOptions, selectedIndex: 0),
-    profile(widgetOptions: _widgetOptions, selectedIndex: 1),
-    profile(widgetOptions: _widgetOptions, selectedIndex: 2),
+    statistics(widgetOptions: _widgetOptions, selectedIndex: 0),
+    callendar(widgetOptions: _widgetOptions, selectedIndex: 1),
+    camera(widgetOptions: _widgetOptions, selectedIndex: 2),
     profile(widgetOptions: _widgetOptions, selectedIndex: 3),
-    profile(widgetOptions: _widgetOptions, selectedIndex: 4)
+    support(widgetOptions: _widgetOptions, selectedIndex: 4)
   ];
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
