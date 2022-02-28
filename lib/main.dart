@@ -94,6 +94,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 215, 221, 233),
       body: screens.elementAt(_selectedIndex),
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomMenu(
         selectedIndex: _selectedIndex,
         onClicked: _onItemTapped,

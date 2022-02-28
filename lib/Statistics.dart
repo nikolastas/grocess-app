@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'colors&Textlines/colorsAndTextlines.dart';
 // import 'card.dart';
 
 // class profile extends StatefulWidget {
@@ -43,6 +44,33 @@ class statistics extends StatelessWidget {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
+      SizedBox(height: 40),
+      Container(
+        height: 460,
+        width: 497,
+        color: secondaryGrey,
+        child: Column(
+          children: [
+            const SizedBox(height: 50),
+            const Text('Statistics'),
+            const SizedBox(height: 10),
+            Container(
+              height: 40,
+              width: 300,
+              // color: primaryYellow,
+              decoration: const BoxDecoration(
+                color: Colors.amber,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(7),
+                  topRight: Radius.circular(7),
+                  bottomLeft: Radius.circular(7),
+                  bottomRight: Radius.circular(7),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ), //Sized)
     ]);
   }
 }

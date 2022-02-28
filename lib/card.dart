@@ -45,7 +45,7 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'Open Sans',
+                                fontFamily: 'OpenSans',
                                 fontSize: 32,
                                 letterSpacing:
                                     0 /*percentages not used in flutter. defaulting to zero*/,
@@ -59,7 +59,7 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'Open Sans',
+                                fontFamily: 'OpenSans',
                                 fontSize: 24,
                                 letterSpacing:
                                     0 /*percentages not used in flutter. defaulting to zero*/,
