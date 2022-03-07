@@ -1,6 +1,6 @@
 import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
-import 'card.dart';
+import 'cards/card.dart';
 import 'popups/CancelSubscription.dart';
 import 'popups/PayNow.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../card.dart';
+import '../cards/card.dart';
 import '../colors&Textlines/colorsAndTextlines.dart';
 
 Widget cancleSubPopup(BuildContext context) {
