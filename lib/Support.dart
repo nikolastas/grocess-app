@@ -11,6 +11,7 @@ import 'colors&Textlines/colorsAndTextlines.dart'; //       {Key? key, this.widg
 //   @override
 //   _profileState createState() => _profileState();
 // }
+var _controller = TextEditingController();
 
 class support extends StatelessWidget {
   List widgetOptions;
@@ -96,12 +97,13 @@ class support extends StatelessWidget {
             Text('Contact Us'),
             SizedBox(height: 40),
             TextField(
+                controller: _controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Type Here',
+                  hintText: 'Type Here',
                 ),
-                maxLines: 4,
-                minLines: 4),
+                maxLines: 5,
+                minLines: 3),
             SizedBox(height: 40),
             Container(
               height: 40,
@@ -117,6 +119,7 @@ class support extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   print("send message");
+                  _controller.clear();
                 },
                 style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 8),
