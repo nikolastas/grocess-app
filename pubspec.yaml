@@ -71,6 +71,9 @@ flutter:
      - assets/images/Profile.png
      - assets/images/support.png
      - assets/images/payment_photo.png
+     - assets/images/bg.png
+     - assets/images/card_bg.png
+     - assets/images/mastercard.png
      
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

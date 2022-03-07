@@ -64,7 +64,7 @@ class _profile extends State {
           onPressed: () {
             showDialog(
               context: context,
-              builder: (BuildContext context) => paySubPopup(context),
+              builder: (BuildContext context) => MySample(),
             );
           },
         ),

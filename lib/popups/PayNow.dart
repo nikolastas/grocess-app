@@ -1,125 +1,234 @@
 import 'package:flutter/material.dart';
-import '../cards/card.dart';
-import '../colors&Textlines/colorsAndTextlines.dart';
+import 'package:flutter_credit_card/credit_card_brand.dart';
+import 'package:flutter_credit_card/credit_card_form.dart';
+import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
-Widget paySubPopup(BuildContext context) {
-  // ignore: unnecessary_new
-  var width = MediaQuery.of(context).size.width;
-  var height = MediaQuery.of(context).size.height;
-  return Scaffold(
-    body: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: primaryWhite,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+import '../colors&Textlines/colorsAndTextlines.dart';
+
+class MySample extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MySampleState();
+  }
+}
+
+class MySampleState extends State<MySample> {
+  String cardNumber = '';
+  String expiryDate = '';
+  String cardHolderName = '';
+  String cvvCode = '';
+  bool isCvvFocused = false;
+  bool useGlassMorphism = false;
+  bool useBackgroundImage = false;
+  OutlineInputBorder? border;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    border = OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.grey.withOpacity(0.7),
+        width: 2.0,
+      ),
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Credit Card View Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          decoration: BoxDecoration(
+            image: !useBackgroundImage
+                ? const DecorationImage(
+                    image: ExactAssetImage('assets/images/bg.png'),
+                    fit: BoxFit.fill,
+                  )
+                : null,
+            color: Colors.black,
+          ),
+          child: SafeArea(
+            child: Column(
+              children: <Widget>[
+                CreditCardWidget(
+                  glassmorphismConfig:
+                      useGlassMorphism ? Glassmorphism.defaultConfig() : null,
+                  cardNumber: cardNumber,
+                  expiryDate: expiryDate,
+                  cardHolderName: cardHolderName,
+                  cvvCode: cvvCode,
+                  showBackView: isCvvFocused,
+                  obscureCardNumber: true,
+                  obscureCardCvv: true,
+                  isHolderNameVisible: true,
+                  cardBgColor: Colors.red,
+                  backgroundImage:
+                      useBackgroundImage ? 'assets/images/card_bg.png' : null,
+                  isSwipeGestureEnabled: true,
+                  onCreditCardWidgetChange:
+                      (CreditCardBrand creditCardBrand) {},
+                  customCardTypeIcons: <CustomCardTypeIcon>[
+                    CustomCardTypeIcon(
+                      cardType: CardType.mastercard,
+                      cardImage: Image.asset(
+                        'assets/images/mastercard.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                    ),
+                  ],
+                ),
                 Expanded(
-                  child: Container(
-                    color: Colors.white,
+                  child: SingleChildScrollView(
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            "Give your card info",
-                            style: ourThemeData.textTheme.headlineLarge,
+                      children: <Widget>[
+                        CreditCardForm(
+                          formKey: formKey,
+                          obscureCvv: true,
+                          obscureNumber: true,
+                          cardNumber: cardNumber,
+                          cvvCode: cvvCode,
+                          isHolderNameVisible: true,
+                          isCardNumberVisible: true,
+                          isExpiryDateVisible: true,
+                          cardHolderName: cardHolderName,
+                          expiryDate: expiryDate,
+                          themeColor: Colors.blue,
+                          textColor: Colors.white,
+                          cardNumberDecoration: InputDecoration(
+                            labelText: 'Number',
+                            hintText: 'XXXX XXXX XXXX XXXX',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            labelStyle: const TextStyle(color: Colors.white),
+                            focusedBorder: border,
+                            enabledBorder: border,
                           ),
+                          expiryDateDecoration: InputDecoration(
+                            hintStyle: const TextStyle(color: Colors.white),
+                            labelStyle: const TextStyle(color: Colors.white),
+                            focusedBorder: border,
+                            enabledBorder: border,
+                            labelText: 'Expired Date',
+                            hintText: 'XX/XX',
+                          ),
+                          cvvCodeDecoration: InputDecoration(
+                            hintStyle: const TextStyle(color: Colors.white),
+                            labelStyle: const TextStyle(color: Colors.white),
+                            focusedBorder: border,
+                            enabledBorder: border,
+                            labelText: 'CVV',
+                            hintText: 'XXX',
+                          ),
+                          cardHolderDecoration: InputDecoration(
+                            hintStyle: const TextStyle(color: Colors.white),
+                            labelStyle: const TextStyle(color: Colors.white),
+                            focusedBorder: border,
+                            enabledBorder: border,
+                            labelText: 'Card Holder',
+                          ),
+                          onCreditCardModelChange: onCreditCardModelChange,
                         ),
-                        SizedBox(height: 8),
-                        TextField(
-                            // controller: _controller,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Type Here',
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              'Glassmorphism',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
                             ),
-                            maxLines: 5,
-                            minLines: 3),
-                        SizedBox(height: 8),
+                            Switch(
+                              value: useGlassMorphism,
+                              inactiveTrackColor: Colors.grey,
+                              activeColor: Colors.white,
+                              activeTrackColor: Colors.green,
+                              onChanged: (bool value) => setState(() {
+                                useGlassMorphism = value;
+                              }),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              'Card Image',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Switch(
+                              value: useBackgroundImage,
+                              inactiveTrackColor: Colors.grey,
+                              activeColor: Colors.white,
+                              activeTrackColor: Colors.green,
+                              onChanged: (bool value) => setState(() {
+                                useBackgroundImage = value;
+                              }),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FloatingActionButton.extended(
+                                backgroundColor: primaryGrey,
+                                label: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: secondaryBlack),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                }),
+                            SizedBox(width: 8),
+                            FloatingActionButton.extended(
+                                backgroundColor: secondaryGrey,
+                                onPressed: () {
+                                  if (formKey.currentState!.validate()) {
+                                    print('valid!');
+                                    Navigator.of(context).pop();
+                                  } else {
+                                    print('invalid!');
+                                  }
+                                },
+                                label: Text("Pay")),
+                          ],
+                        ),
                       ],
                     ),
                   ),
-                ),
-                SizedBox(width: 16),
-                Container(
-                  width: 80,
-                  height: 80,
                 ),
               ],
             ),
           ),
         ),
-        SizedBox(height: 21),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Color(0xfffdfdff),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FloatingActionButton.extended(
-                  backgroundColor: primaryGrey,
-                  label: Text(
-                    "Cancel",
-                    style: TextStyle(color: secondaryBlack),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  }),
-              SizedBox(width: 8),
-              FloatingActionButton.extended(
-                  backgroundColor: secondaryGrey,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  label: Text("Pay")),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-  // Container(
-  //     width: width * 0.95,
-  //     height: height * 0.3,
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(20),
-  //       color: Color(0xfffdfdff),
-  //     ),
-  //     padding: const EdgeInsets.all(16),
-  //     child: SmallcardWidget(
-  //         text_desc: "Input here",
-  //         text_title: "Give your card info",
-  //         button1: FloatingActionButton.extended(
-  //             backgroundColor: primaryGrey,
-  //             label: Text(
-  //               "Cancel",
-  //               style: TextStyle(color: secondaryBlack),
-  //             ),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             }),
-  //         button2: FloatingActionButton.extended(
-  //             backgroundColor: secondaryGrey,
-  //             onPressed: () {},
-  //             label: Text("Pay")),
-  //         asset_image: AssetImage('assets/images/payment_photo.png')));
+      ),
+    );
+  }
+
+  void onCreditCardModelChange(CreditCardModel? creditCardModel) {
+    setState(() {
+      cardNumber = creditCardModel!.cardNumber;
+      expiryDate = creditCardModel.expiryDate;
+      cardHolderName = creditCardModel.cardHolderName;
+      cvvCode = creditCardModel.cvvCode;
+      isCvvFocused = creditCardModel.isCvvFocused;
+    });
+  }
 }
