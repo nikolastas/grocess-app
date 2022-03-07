@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:first_app_figma/Calender.dart';
 import 'package:first_app_figma/Camera.dart';
 import 'package:first_app_figma/Statistics.dart';
@@ -11,7 +12,7 @@ import 'Profile.dart';
 
 // late List<CameraDescription> cameras = [];
 
-void main() {
+void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
 
   // WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ void main() {
   // } on CameraException catch (e) {
   //   logError(e.code, e.description);
   // }
+
   runApp(MyApp());
 }
 
@@ -50,10 +52,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     fontSize: 12,
     fontFamily: 'Roboto',
   );
+
   List screens = [
     statistics(widgetOptions: _widgetOptions, selectedIndex: 0),
     callendar(widgetOptions: _widgetOptions, selectedIndex: 1),
-    camera(widgetOptions: _widgetOptions, selectedIndex: 2),
+    // TakePictureScreen(camera: cameras.first),
     profile(widgetOptions: _widgetOptions, selectedIndex: 3),
     support(widgetOptions: _widgetOptions, selectedIndex: 4)
   ];

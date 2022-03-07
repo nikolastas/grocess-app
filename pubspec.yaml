@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_credit_card: ^3.0.1
+  camera: ^0.9.4+14
   # camera: ^0.9.4+5
 dev_dependencies:
   flutter_test:
