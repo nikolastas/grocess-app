@@ -1,22 +1,13 @@
+import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
 import 'card.dart';
-// class profile extends StatefulWidget {
-//   final List? widgetOptions1;
-//   final List? screens1;
-//   final selectedIndex1;
-//   const profile(
-//       {Key? key, this.widgetOptions1, this.screens1, this.selectedIndex1})
-//       : super(key: key);
+import 'popups/CancelSubscription.dart';
+import 'popups/PayNow.dart';
 
-//   @override
-//   _profileState createState() => _profileState();
-// }
-
-class profile extends StatelessWidget {
+class _profile extends State {
   List widgetOptions;
-  // List screens;
   final selectedIndex;
-  profile({required this.widgetOptions, this.selectedIndex});
+  _profile({required this.widgetOptions, required this.selectedIndex});
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -42,7 +33,51 @@ class profile extends StatelessWidget {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-      SmallcardWidget(),
+      SmallcardWidget(
+        text_title: "Manage Subcription",
+        text_desc: "What do you want to do ?",
+        asset_image: AssetImage('assets/images/payment_photo.png'),
+        button1: FloatingActionButton.extended(
+          label: Text(
+            "Cancel",
+            style: TextStyle(color: secondaryBlack),
+          ),
+          backgroundColor: primaryGrey,
+          icon: Icon(Icons.close, color: secondaryBlack),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => cancleSubPopup(context),
+            );
+          },
+        ),
+        button2: FloatingActionButton.extended(
+          label: Text(
+            "Pay Now",
+            style: TextStyle(color: secondaryBlack),
+          ),
+          backgroundColor: primaryGrey,
+          icon: Icon(
+            Icons.payment,
+            color: secondaryBlack,
+          ),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => paySubPopup(context),
+            );
+          },
+        ),
+      ),
     ]);
   }
+}
+
+class profile extends StatefulWidget {
+  List widgetOptions;
+  final selectedIndex;
+  profile({required this.widgetOptions, required this.selectedIndex});
+  @override
+  _profile createState() =>
+      _profile(widgetOptions: widgetOptions, selectedIndex: selectedIndex);
 }

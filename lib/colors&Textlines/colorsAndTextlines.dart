@@ -25,10 +25,16 @@ ThemeData ourThemeData = ThemeData(
     // Define the default `TextTheme`. Use this to specify the default
     // text styling for headlines, titles, bodies of text, and more.
     textTheme: const TextTheme(
-      bodySmall: TextStyle(fontSize: 14.0, fontFamily: 'OpenSans'),
-      bodyMedium: TextStyle(fontSize: 14.0, fontFamily: 'OpenSans'),
-      bodyLarge: TextStyle(fontSize: 16.0, fontFamily: 'OpenSans'),
-      headlineSmall: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
-      headlineLarge: TextStyle(fontSize: 32.0, fontFamily: 'OpenSans'),
-      displaySmall: TextStyle(fontSize: 36.0, fontFamily: 'Roboto'),
+      bodySmall: TextStyle(
+          fontSize: 14.0, fontFamily: 'OpenSans', color: Color(0xff000000)),
+      bodyMedium: TextStyle(
+          fontSize: 14.0, fontFamily: 'OpenSans', color: Color(0xff000000)),
+      bodyLarge: TextStyle(
+          fontSize: 16.0, fontFamily: 'OpenSans', color: Color(0xff000000)),
+      headlineSmall: TextStyle(
+          fontSize: 24.0, fontFamily: 'OpenSans', color: Color(0xff000000)),
+      headlineLarge: TextStyle(
+          fontSize: 32.0, fontFamily: 'OpenSans', color: Color(0xff000000)),
+      displaySmall: TextStyle(
+          fontSize: 36.0, fontFamily: 'Roboto', color: Color(0xff000000)),
     ));

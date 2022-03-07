@@ -1,179 +1,130 @@
 import 'package:flutter/material.dart';
+import 'colors&Textlines/colorsAndTextlines.dart';
 
 class SmallcardWidget extends StatefulWidget {
+  String text_title;
+  String text_desc;
+  FloatingActionButton button1;
+  FloatingActionButton button2;
+  AssetImage asset_image;
+  SmallcardWidget(
+      {required this.text_desc,
+      required this.text_title,
+      required this.button1,
+      required this.button2,
+      required this.asset_image});
   @override
-  _SmallcardWidgetState createState() => _SmallcardWidgetState();
+  _SmallcardWidgetState createState() => _SmallcardWidgetState(
+      text_desc: text_desc,
+      text_title: text_title,
+      button1: button1,
+      button2: button2,
+      asset_image: asset_image);
 }
 
 class _SmallcardWidgetState extends State<SmallcardWidget> {
+  String text_title;
+  String text_desc;
+  FloatingActionButton button1;
+  FloatingActionButton button2;
+  AssetImage asset_image;
+  _SmallcardWidgetState(
+      {required this.text_desc,
+      required this.text_title,
+      required this.button1,
+      required this.button2,
+      required this.asset_image});
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator SmallcardWidget - INSTANCE
-
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Container(
-        color: Color.fromRGBO(253, 253, 255, 1),
-        width: 391,
-        height: 218,
-        child: Stack(children: <Widget>[
-          Positioned(
-              top: 16,
-              left: 16,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                  ),
-                  color: Color.fromRGBO(253, 253, 255, 1),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+      width: width * 0.95,
+      height: height * 0.3,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color(0xfffdfdff),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: primaryWhite,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: Colors.white,
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Are you sure?',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'OpenSans',
-                                fontSize: 32,
-                                letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1.5 /*PERCENT not supported*/
-                                ),
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              text_title,
+                              style: ourThemeData.textTheme.headlineLarge,
+                            ),
                           ),
                           SizedBox(height: 8),
-                          Text(
-                            'Please re-think?',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'OpenSans',
-                                fontSize: 24,
-                                letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              text_desc,
+                              style: ourThemeData.textTheme.bodyMedium,
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(width: 16),
-                    Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(196, 196, 196, 1),
-                        )),
-                  ],
-                ),
-              )),
-          Positioned(
-              top: 146,
-              left: 16,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
                   ),
-                  color: Color.fromRGBO(253, 253, 255, 1),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Container(
+                  SizedBox(width: 16),
+                  Container(
+                      width: 80,
+                      height: 80,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16),
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
+                        image: DecorationImage(
+                          image: asset_image,
+                          fit: BoxFit.fill,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                              color:
-                                  Color.fromRGBO(0, 0, 0, 0.30000001192092896),
-                              offset: Offset(0, 1),
-                              blurRadius: 3)
-                        ],
-                        color: Color.fromRGBO(215, 221, 233, 1),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          SizedBox(width: 12),
-                          Text(
-                            'Don’t Cancel',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'Roboto',
-                                fontSize: 14,
-                                letterSpacing: 0.10000000149011612,
-                                fontWeight: FontWeight.normal,
-                                height: 1.4285714285714286),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16),
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color:
-                                  Color.fromRGBO(0, 0, 0, 0.30000001192092896),
-                              offset: Offset(0, 1),
-                              blurRadius: 3)
-                        ],
-                        color: Color.fromRGBO(215, 221, 233, 1),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          SizedBox(width: 12),
-                          Text(
-                            'Cancel',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                                fontFamily: 'Roboto',
-                                fontSize: 14,
-                                letterSpacing: 0.10000000149011612,
-                                fontWeight: FontWeight.normal,
-                                height: 1.4285714285714286),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-        ]));
+                      )),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 21),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xfffdfdff),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                button1,
+                SizedBox(width: 8),
+                button2,
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
