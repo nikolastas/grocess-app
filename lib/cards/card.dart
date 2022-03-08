@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../colors&Textlines/colorsAndTextlines.dart';
 
 class SmallcardWidget extends StatefulWidget {
+  final width;
+  final height;
   String text_title;
   String text_desc;
   FloatingActionButton button1;
@@ -12,7 +14,9 @@ class SmallcardWidget extends StatefulWidget {
       required this.text_title,
       required this.button1,
       required this.button2,
-      required this.asset_image});
+      required this.asset_image,
+      required this.height,
+      required this.width});
   @override
   _SmallcardWidgetState createState() => _SmallcardWidgetState(
       text_desc: text_desc,
@@ -37,11 +41,11 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator SmallcardWidget - INSTANCE
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+    var width = widget.width;
+    var height = widget.height;
     return Container(
-      width: width * 0.95,
-      height: height * 0.3,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Color(0xfffdfdff),

@@ -7,14 +7,14 @@ Widget cancleSubPopup(BuildContext context) {
   var width = MediaQuery.of(context).size.width;
   var height = MediaQuery.of(context).size.height;
   return Container(
-      width: width * 0.95,
-      height: height * 0.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Color(0xfffdfdff),
       ),
       padding: const EdgeInsets.all(16),
       child: SmallcardWidget(
+          height: height * 0.5,
+          width: width * 0.95,
           text_desc: "Are you sure?",
           text_title: "Please rethink",
           button1: FloatingActionButton.extended(

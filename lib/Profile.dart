@@ -34,8 +34,18 @@ class _profile extends State {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-      profileCard(),
+      profileCard(
+        constumer_name: "nikolastas",
+        typeOfUser: "Pro",
+        width: MediaQuery.of(context).size.width * 0.95,
+        height: MediaQuery.of(context).size.width * 0.4,
+      ),
+      SizedBox(
+        height: 12,
+      ),
       SmallcardWidget(
+        width: MediaQuery.of(context).size.width * 0.95,
+        height: MediaQuery.of(context).size.height * 0.3,
         text_title: "Manage Subcription",
         text_desc: "What do you want to do ?",
         asset_image: AssetImage('assets/images/payment_photo.png'),
