@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'cards/card.dart';
 import 'popups/CancelSubscription.dart';
 import 'popups/PayNow.dart';
+import 'cards/ProfileCard.dart';
 
 class _profile extends State {
   List widgetOptions;
@@ -33,6 +34,7 @@ class _profile extends State {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
+      profileCard(),
       SmallcardWidget(
         text_title: "Manage Subcription",
         text_desc: "What do you want to do ?",
