@@ -10,6 +10,8 @@ import 'Profile.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
 
+import 'colors&Textlines/colorsAndTextlines.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -60,7 +62,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   late List screens = [
     statistics(widgetOptions: _widgetOptions, selectedIndex: 0),
     callendar(widgetOptions: _widgetOptions, selectedIndex: 1),
-    TakePictureScreen(camera: camera),
+    TakePictureScreen(
+      camera: camera,
+      selectedIndex: 2,
+      widgetOptions: _widgetOptions,
+    ),
     profile(widgetOptions: _widgetOptions, selectedIndex: 3),
     support(widgetOptions: _widgetOptions, selectedIndex: 4)
   ];
@@ -99,7 +105,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 215, 221, 233),
+      backgroundColor: primaryGrey,
       body: screens.elementAt(_selectedIndex),
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomMenu(
