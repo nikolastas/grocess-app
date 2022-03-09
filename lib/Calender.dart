@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'colors&Textlines/colorsAndTextlines.dart';
+import 'package:intl/intl.dart';
 
 // class profile extends StatefulWidget {
 //   final List? widgetOptions1;
@@ -15,19 +16,29 @@ import 'colors&Textlines/colorsAndTextlines.dart';
 //   @override
 //   _profileState createState() => _profileState();
 // }
-var _selectedDay, _focusedDay;
 
-class callendar extends StatelessWidget {
+class callendar extends StatefulWidget {
   List widgetOptions;
   // List screens;
   final selectedIndex;
   callendar({required this.widgetOptions, this.selectedIndex});
+
+  @override
+  State<callendar> createState() => _callendarState();
+}
+
+class _callendarState extends State<callendar> {
+  DateTime _selectedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
+  var _calendarFormat;
+  var money = 0;
+  String dropdown1 = 'one', dropdown2 = 'das';
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       SizedBox(height: 40),
       Center(
-        child: widgetOptions.elementAt(selectedIndex),
+        child: widget.widgetOptions.elementAt(widget.selectedIndex),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -61,21 +72,33 @@ class callendar extends StatelessWidget {
           color: primaryWhite,
         ),
         child: TableCalendar(
-            firstDay: DateTime.utc(2010, 10, 16),
-            lastDay: DateTime.utc(2030, 3, 14),
-            focusedDay: DateTime.now(),
-            calendarStyle: CalendarStyle(
-              todayDecoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(90),
-                    topRight: Radius.circular(90),
-                    bottomLeft: Radius.circular(90),
-                    bottomRight: Radius.circular(90),
-                  ),
-                  color: primaryBlue),
-              selectedDecoration:
-                  BoxDecoration(color: primaryBlue), //TODO change later
-            )),
+          firstDay: DateTime.utc(2010, 10, 16),
+          lastDay: DateTime.utc(2030, 3, 14),
+          focusedDay: DateTime.now(),
+          calendarStyle: CalendarStyle(
+            todayDecoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(90),
+                  topRight: Radius.circular(90),
+                  bottomLeft: Radius.circular(90),
+                  bottomRight: Radius.circular(90),
+                ),
+                color: primaryPink),
+            selectedDecoration: BoxDecoration(color: primaryBlue),
+          ),
+          selectedDayPredicate: (day) {
+            return isSameDay(_selectedDay, day);
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay; // update `_focusedDay` here as well
+            });
+          },
+          onPageChanged: (focusedDay) {
+            _focusedDay = focusedDay;
+          },
+        ),
       ),
       SizedBox(height: 30),
       Container(
@@ -100,7 +123,7 @@ class callendar extends StatelessWidget {
               children: [
                 SizedBox(width: 100),
                 DropdownButton<String>(
-                  value: 'one',
+                  value: dropdown1,
                   // isExpanded: true,
                   items: <String>['one', 'two', 'three']
                       .map<DropdownMenuItem<String>>((String value) {
@@ -109,7 +132,11 @@ class callendar extends StatelessWidget {
                       child: Text(value),
                     );
                   }).toList(),
-                  onChanged: null,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdown1 = newValue!;
+                    });
+                  },
                   style: const TextStyle(color: Colors.amber),
                   underline: Container(
                     height: 2,
@@ -118,7 +145,7 @@ class callendar extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 DropdownButton<String>(
-                  value: 'das',
+                  value: dropdown2,
                   // isExpanded: true,
                   items: <String>['hadsa', 'das', 'thrsdasde']
                       .map<DropdownMenuItem<String>>((String value) {
@@ -127,7 +154,11 @@ class callendar extends StatelessWidget {
                       child: Text(value),
                     );
                   }).toList(),
-                  onChanged: null,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdown2 = newValue!;
+                    });
+                  },
                   style: const TextStyle(color: Colors.amber),
                   underline: Container(
                     height: 2,
@@ -136,7 +167,12 @@ class callendar extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 TextButton(
-                  onPressed: null,
+                  onPressed: () {
+                    //TEST!!!!
+                    setState(() {
+                      money += 1;
+                    });
+                  },
                   style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       backgroundColor: Colors.deepPurple),
@@ -161,8 +197,8 @@ class callendar extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(width: 20),
-                    Text("On (date) you spent:"),
-                    SizedBox(width: 160),
+                    Text("On ${ChangeDayFormat(_selectedDay)} you spent:"),
+                    SizedBox(width: 130),
                     Container(
                       height: 70,
                       width: 70,
@@ -176,7 +212,7 @@ class callendar extends StatelessWidget {
                         ),
                         color: Colors.deepPurple,
                       ),
-                      child: Text('dolar'),
+                      child: Text('$money'),
                     )
                   ],
                 ))
@@ -185,4 +221,8 @@ class callendar extends StatelessWidget {
       )
     ]);
   }
+}
+
+String ChangeDayFormat(date) {
+  return DateFormat('yyyy-MM-dd').format(date);
 }
