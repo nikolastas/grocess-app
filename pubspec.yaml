@@ -31,6 +31,9 @@ dependencies:
     sdk: flutter
   color: any
   hexcolor: ^2.0.5
+  table_calendar: ^3.0.4
+  intl: any
+
 
 
   # The following adds the Cupertino Icons font to your application.
