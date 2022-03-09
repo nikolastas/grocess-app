@@ -123,6 +123,7 @@ class _callendarState extends State<callendar> {
               children: [
                 SizedBox(width: 100),
                 DropdownButton<String>(
+                  //FIXME: overflow on lists
                   value: dropdown1,
                   // isExpanded: true,
                   items: <String>['one', 'two', 'three']
@@ -137,7 +138,7 @@ class _callendarState extends State<callendar> {
                       dropdown1 = newValue!;
                     });
                   },
-                  style: const TextStyle(color: Colors.amber),
+                  style: const TextStyle(color: Colors.black),
                   underline: Container(
                     height: 2,
                     color: Colors.deepPurpleAccent,
@@ -145,6 +146,7 @@ class _callendarState extends State<callendar> {
                 ),
                 SizedBox(width: 10),
                 DropdownButton<String>(
+                  //FIXME: overflow on lists
                   value: dropdown2,
                   // isExpanded: true,
                   items: <String>['hadsa', 'das', 'thrsdasde']
@@ -159,7 +161,7 @@ class _callendarState extends State<callendar> {
                       dropdown2 = newValue!;
                     });
                   },
-                  style: const TextStyle(color: Colors.amber),
+                  style: const TextStyle(color: Colors.black),
                   underline: Container(
                     height: 2,
                     color: Colors.deepPurpleAccent,
@@ -168,7 +170,7 @@ class _callendarState extends State<callendar> {
                 SizedBox(width: 10),
                 TextButton(
                   onPressed: () {
-                    //TEST!!!!
+                    //TODO: change to apropriate method!!!!
                     setState(() {
                       money += 1;
                     });
@@ -176,7 +178,8 @@ class _callendarState extends State<callendar> {
                   style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       backgroundColor: Colors.deepPurple),
-                  child: Text('Test3'),
+                  child: Text('Search',
+                      style: const TextStyle(color: Colors.white)),
                 )
               ],
             ),
@@ -212,7 +215,8 @@ class _callendarState extends State<callendar> {
                         ),
                         color: Colors.deepPurple,
                       ),
-                      child: Text('$money'),
+                      child: Text('$money',
+                          style: const TextStyle(color: Colors.white)),
                     )
                   ],
                 ))
