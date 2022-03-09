@@ -56,7 +56,7 @@ class _Profile extends State<Profile> {
         constumerName: "nikolastas",
         typeOfUser: "Pro",
         width: MediaQuery.of(context).size.width * 0.95,
-        height: MediaQuery.of(context).size.width * 0.4,
+        height: MediaQuery.of(context).size.height * 0.25,
       ),
       const SizedBox(
         height: 12,
