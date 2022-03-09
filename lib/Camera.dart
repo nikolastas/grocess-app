@@ -6,7 +6,7 @@ import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
 
 class TakePictureScreen extends StatefulWidget {
-  TakePictureScreen(
+  const TakePictureScreen(
       {Key? key,
       required this.camera,
       required this.selectedIndex,
@@ -14,8 +14,8 @@ class TakePictureScreen extends StatefulWidget {
       : super(key: key);
 
   final CameraDescription camera;
-  List widgetOptions;
-  final selectedIndex;
+  final List widgetOptions;
+  final int selectedIndex;
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
 }

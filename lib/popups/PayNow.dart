@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
-import 'package:flutter_credit_card/credit_card_form.dart';
-import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 import '../colors&Textlines/colorsAndTextlines.dart';
 
 class MySample extends StatefulWidget {
+  // final bool paidStatus;
+
+  const MySample({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return MySampleState();
@@ -194,20 +196,20 @@ class MySampleState extends State<MySample> {
                                   style: TextStyle(color: secondaryBlack),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  Navigator.pop(context, null);
                                 }),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             FloatingActionButton.extended(
                                 backgroundColor: secondaryGrey,
                                 onPressed: () {
                                   if (formKey.currentState!.validate()) {
-                                    print('valid!');
-                                    Navigator.of(context).pop();
+                                    // print('valid!');
+                                    Navigator.pop(context, true);
                                   } else {
-                                    print('invalid!');
+                                    // print('invalid!');
                                   }
                                 },
-                                label: Text("Pay")),
+                                label: const Text("Pay")),
                           ],
                         ),
                       ],

@@ -2,35 +2,40 @@ import 'package:flutter/material.dart';
 import '../cards/card.dart';
 import '../colors&Textlines/colorsAndTextlines.dart';
 
-Widget cancleSubPopup(BuildContext context) {
+Widget cancleSubPopup({required BuildContext context, var status}) {
   // ignore: unnecessary_new
   var width = MediaQuery.of(context).size.width;
   var height = MediaQuery.of(context).size.height;
   return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color(0xfffdfdff),
+        color: primaryWhite,
       ),
       padding: const EdgeInsets.all(16),
       child: SmallcardWidget(
           height: height * 0.5,
           width: width * 0.95,
-          text_desc: "Are you sure?",
-          text_title: "Please rethink",
+          textDesc: "Are you sure?",
+          textTitle: "Please rethink",
+          paidStatus: status,
+          moreWidget: const [],
           button1: FloatingActionButton.extended(
               backgroundColor: secondaryGrey,
-              label: Text("Don't Cancel"),
+              label: const Text("Don't Cancel"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pop(context, status);
               }),
           button2: FloatingActionButton.extended(
               backgroundColor: primaryGrey,
-              onPressed: () {},
+              onPressed: () {
+                status = false;
+                Navigator.pop(context, false);
+              },
               label: Text(
                 "Cancel",
                 style: TextStyle(color: secondaryBlack),
               )),
-          asset_image: AssetImage('assets/images/payment_photo.png')));
+          assetImage: const AssetImage('')));
   // return new AlertDialog(
   //   title: const Text('Popup example'),
   //   content: new Column(

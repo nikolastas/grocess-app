@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import '../colors&Textlines/colorsAndTextlines.dart';
 
-class profileCard extends StatefulWidget {
-  final height;
-  final width;
-  String constumer_name;
-  String typeOfUser;
-  profileCard(
+class ProfileCard extends StatefulWidget {
+  final double height;
+  final double width;
+  final String constumerName;
+  final String typeOfUser;
+  const ProfileCard(
       {Key? key,
       required this.height,
       required this.width,
-      required this.constumer_name,
+      required this.constumerName,
       required this.typeOfUser})
       : super(key: key);
 
   @override
-  State<profileCard> createState() => _profileCardState();
+  State<ProfileCard> createState() => _ProfileCardState();
 }
 
-class _profileCardState extends State<profileCard> {
+class _ProfileCardState extends State<ProfileCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,9 +37,9 @@ class _profileCardState extends State<profileCard> {
             ),
           ),
           Text(
-            widget.constumer_name,
+            widget.constumerName,
             textAlign: TextAlign.justify,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
                 fontFamily: 'Open Sans',
                 fontSize: 32,

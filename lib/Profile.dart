@@ -5,16 +5,34 @@ import 'popups/CancelSubscription.dart';
 import 'popups/PayNow.dart';
 import 'cards/ProfileCard.dart';
 
-class _profile extends State {
-  List widgetOptions;
-  final selectedIndex;
-  _profile({required this.widgetOptions, required this.selectedIndex});
+class Profile extends StatefulWidget {
+  final List widgetOptions;
+  final int selectedIndex;
+  final bool paidStatus;
+  const Profile(
+      {Key? key,
+      required this.widgetOptions,
+      required this.selectedIndex,
+      required this.paidStatus})
+      : super(key: key);
+  @override
+  _Profile createState() => _Profile();
+}
+
+class _Profile extends State<Profile> {
+  bool paidStatus = false;
+  @override
+  void initState() {
+    super.initState();
+    paidStatus = widget.paidStatus;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(height: 40),
+      const SizedBox(height: 40),
       Center(
-        child: widgetOptions.elementAt(selectedIndex),
+        child: widget.widgetOptions.elementAt(widget.selectedIndex),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -34,21 +52,23 @@ class _profile extends State {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-      profileCard(
-        constumer_name: "nikolastas",
+      ProfileCard(
+        constumerName: "nikolastas",
         typeOfUser: "Pro",
         width: MediaQuery.of(context).size.width * 0.95,
         height: MediaQuery.of(context).size.width * 0.4,
       ),
-      SizedBox(
+      const SizedBox(
         height: 12,
       ),
       SmallcardWidget(
         width: MediaQuery.of(context).size.width * 0.95,
         height: MediaQuery.of(context).size.height * 0.3,
-        text_title: "Manage Subcription",
-        text_desc: "What do you want to do ?",
-        asset_image: AssetImage('assets/images/payment_photo.png'),
+        paidStatus: paidStatus,
+        textTitle: "Manage Subcription",
+        textDesc: "What do you want to do ?",
+        assetImage: const AssetImage('assets/images/payment_photo.png'),
+        moreWidget: const [],
         button1: FloatingActionButton.extended(
           label: Text(
             "Cancel",
@@ -56,11 +76,20 @@ class _profile extends State {
           ),
           backgroundColor: primaryGrey,
           icon: Icon(Icons.close, color: secondaryBlack),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => cancleSubPopup(context),
-            );
+          onPressed: () async {
+            if (paidStatus == true) {
+              final status = await showDialog(
+                context: context,
+                builder: (BuildContext context) =>
+                    cancleSubPopup(context: context, status: paidStatus),
+              );
+              // print("it was " + paidStatus.toString() + ' now it is ' + '$status');
+              setState(() {
+                paidStatus = status;
+              });
+            } else {}
+            // paidStatus = status;
+            // print("now is " '$paidStatus');
           },
         ),
         button2: FloatingActionButton.extended(
@@ -73,23 +102,21 @@ class _profile extends State {
             Icons.payment,
             color: secondaryBlack,
           ),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => MySample(),
-            );
+          onPressed: () async {
+            if (paidStatus == false) {
+              final status = await showDialog(
+                context: context,
+                builder: (BuildContext context) => const MySample(),
+              );
+              setState(() {
+                if (status == true || status == false) {
+                  paidStatus = status;
+                }
+              });
+            }
           },
         ),
       ),
     ]);
   }
-}
-
-class profile extends StatefulWidget {
-  List widgetOptions;
-  final selectedIndex;
-  profile({required this.widgetOptions, required this.selectedIndex});
-  @override
-  _profile createState() =>
-      _profile(widgetOptions: widgetOptions, selectedIndex: selectedIndex);
 }

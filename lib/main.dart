@@ -58,7 +58,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     fontSize: 12,
     fontFamily: 'Roboto',
   );
-
+  var paidStatus = true;
   late List screens = [
     statistics(widgetOptions: _widgetOptions, selectedIndex: 0),
     callendar(widgetOptions: _widgetOptions, selectedIndex: 1),
@@ -67,7 +67,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       selectedIndex: 2,
       widgetOptions: _widgetOptions,
     ),
-    profile(widgetOptions: _widgetOptions, selectedIndex: 3),
+    Profile(
+        widgetOptions: _widgetOptions,
+        selectedIndex: 3,
+        paidStatus: paidStatus),
     support(widgetOptions: _widgetOptions, selectedIndex: 4)
   ];
   static const List<Widget> _widgetOptions = <Widget>[

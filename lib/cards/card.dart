@@ -2,44 +2,54 @@ import 'package:flutter/material.dart';
 import '../colors&Textlines/colorsAndTextlines.dart';
 
 class SmallcardWidget extends StatefulWidget {
-  final width;
-  final height;
-  String text_title;
-  String text_desc;
-  FloatingActionButton button1;
-  FloatingActionButton button2;
-  AssetImage asset_image;
-  SmallcardWidget(
-      {required this.text_desc,
-      required this.text_title,
+  final double width;
+  final double height;
+  final String textTitle;
+  final String textDesc;
+  final FloatingActionButton button1;
+  final FloatingActionButton button2;
+  final AssetImage assetImage;
+  final List<Widget> moreWidget;
+  final bool paidStatus;
+  const SmallcardWidget(
+      {Key? key,
+      required this.textDesc,
+      required this.textTitle,
       required this.button1,
       required this.button2,
-      required this.asset_image,
+      required this.assetImage,
       required this.height,
-      required this.width});
+      required this.width,
+      required this.moreWidget,
+      required this.paidStatus})
+      : super(key: key);
   @override
-  _SmallcardWidgetState createState() => _SmallcardWidgetState(
-      text_desc: text_desc,
-      text_title: text_title,
-      button1: button1,
-      button2: button2,
-      asset_image: asset_image);
+  _SmallcardWidgetState createState() {
+    return _SmallcardWidgetState();
+  }
 }
 
 class _SmallcardWidgetState extends State<SmallcardWidget> {
-  String text_title;
-  String text_desc;
-  FloatingActionButton button1;
-  FloatingActionButton button2;
-  AssetImage asset_image;
-  _SmallcardWidgetState(
-      {required this.text_desc,
-      required this.text_title,
-      required this.button1,
-      required this.button2,
-      required this.asset_image});
+  bool paidStatus = false;
+  String paidStatusMessage = "NULL";
+  @override
+  void initState() {
+    super.initState();
+    paidStatus = widget.paidStatus;
+    if (paidStatus) {
+      paidStatusMessage = "Paid";
+    } else {
+      paidStatusMessage = "NOT Paid";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (widget.paidStatus) {
+      paidStatusMessage = "Paid";
+    } else {
+      paidStatusMessage = "NOT Paid";
+    }
     // Figma Flutter Generator SmallcardWidget - INSTANCE
     var width = widget.width;
     var height = widget.height;
@@ -48,7 +58,7 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color(0xfffdfdff),
+        color: const Color(0xfffdfdff),
       ),
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -79,15 +89,15 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
                           SizedBox(
                             width: double.infinity,
                             child: Text(
-                              text_title,
+                              widget.textTitle,
                               style: ourThemeData.textTheme.headlineLarge,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           SizedBox(
                             width: double.infinity,
                             child: Text(
-                              text_desc,
+                              widget.textDesc,
                               style: ourThemeData.textTheme.bodyMedium,
                             ),
                           ),
@@ -95,13 +105,13 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Container(
                       width: 80,
                       height: 80,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: asset_image,
+                          image: widget.assetImage,
                           fit: BoxFit.fill,
                         ),
                       )),
@@ -109,21 +119,31 @@ class _SmallcardWidgetState extends State<SmallcardWidget> {
               ),
             ),
           ),
-          SizedBox(height: 21),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              const Text("Status: "),
+              const SizedBox(
+                width: 12,
+              ),
+              Text(paidStatusMessage),
+            ],
+          ),
+          const SizedBox(height: 11),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xfffdfdff),
+              color: const Color(0xfffdfdff),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                button1,
-                SizedBox(width: 8),
-                button2,
+                widget.button1,
+                const SizedBox(width: 8),
+                widget.button2,
               ],
             ),
           ),
