@@ -4,7 +4,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'colors&Textlines/colorsAndTextlines.dart';
 import 'package:intl/intl.dart';
 
-
 // class profile extends StatefulWidget {
 //   final List? widgetOptions1;
 //   final List? screens1;
@@ -58,7 +57,6 @@ class _callendarState extends State<callendar> {
               color: Color.fromRGBO(253, 253, 255, 1),
             )),
       ),
-
       SizedBox(height: 30),
       Container(
         width: 392,
@@ -231,7 +229,6 @@ class _callendarState extends State<callendar> {
           ],
         ),
       )
-
     ]);
   }
 }
