@@ -77,14 +77,21 @@ class _callendarState extends State<callendar> {
           focusedDay: DateTime.now(),
           calendarStyle: CalendarStyle(
             todayDecoration: BoxDecoration(
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(90),
+                //   topRight: Radius.circular(90),
+                //   bottomLeft: Radius.circular(90),
+                //   bottomRight: Radius.circular(90),
+                // ),
+                color: primaryPink),
+            selectedDecoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(90),
                   topRight: Radius.circular(90),
                   bottomLeft: Radius.circular(90),
                   bottomRight: Radius.circular(90),
                 ),
-                color: primaryPink),
-            selectedDecoration: BoxDecoration(color: primaryBlue),
+                color: primaryBlue),
           ),
           selectedDayPredicate: (day) {
             return isSameDay(_selectedDay, day);
