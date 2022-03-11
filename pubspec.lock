@@ -184,7 +184,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -206,7 +205,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-
   sky_engine:
     dependency: transitive
     description: flutter

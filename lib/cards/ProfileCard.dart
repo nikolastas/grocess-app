@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../colors&Textlines/colorsAndTextlines.dart';
+import '../colors&Textlines/colors_and_textlines.dart';
 
 class ProfileCard extends StatefulWidget {
   final double height;

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
+import 'package:first_app_figma/colors&Textlines/colors_and_textlines.dart';
 import 'package:flutter/material.dart';
 
 class TakePictureScreen extends StatefulWidget {
@@ -96,7 +96,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             );
           } catch (e) {
             // If an error occurs, log the error to the console.
-            print(e);
+            debugPrint(e.toString());
           }
         },
         child: Icon(
@@ -118,7 +118,10 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
+      appBar: AppBar(
+        title: const Text('Display the Picture'),
+        backgroundColor: secondaryGrey,
+      ),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
       body: Image.file(File(imagePath)),
