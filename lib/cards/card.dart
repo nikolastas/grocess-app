@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../colors&Textlines/colors_and_textlines.dart';
+import '../colors&Textlines/colorsAndTextlines.dart';
 
 class SmallcardWidget extends StatefulWidget {
   final double width;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
-import '../colors&Textlines/colors_and_textlines.dart';
+import '../colors&Textlines/colorsAndTextlines.dart';
 
 class MySample extends StatefulWidget {
   // final bool paidStatus;

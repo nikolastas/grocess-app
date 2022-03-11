@@ -1,4 +1,4 @@
-import 'package:first_app_figma/colors&Textlines/colors_and_textlines.dart';
+import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
 
 class BottomMenu extends StatelessWidget {

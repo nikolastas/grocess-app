@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:table_calendar/table_calendar.dart';
-import 'colors&Textlines/colors_and_textlines.dart';
+import 'colors&Textlines/colorsAndTextlines.dart';
 import 'package:intl/intl.dart';
 
 // class profile extends StatefulWidget {

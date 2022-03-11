@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'colors&Textlines/colors_and_textlines.dart';
+import 'colors&Textlines/colorsAndTextlines.dart';
 
 class statistics extends StatelessWidget {
   List widgetOptions;

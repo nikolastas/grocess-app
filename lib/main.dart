@@ -9,7 +9,7 @@ import 'Profile.dart';
 
 import 'dart:async';
 
-import 'colors&Textlines/colors_and_textlines.dart';
+import 'colors&Textlines/colorsAndTextlines.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

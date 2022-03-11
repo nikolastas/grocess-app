@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //   final List? screens1;
 //   final selectedIndex1;
 //   const profile(
-import 'colors&Textlines/colors_and_textlines.dart'; //       {Key? key, this.widgetOptions1, this.screens1, this.selectedIndex1})
+import 'colors&Textlines/colorsAndTextlines.dart'; //       {Key? key, this.widgetOptions1, this.screens1, this.selectedIndex1})
 //       : super(key: key);
 
 //   @override

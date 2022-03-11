@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:first_app_figma/colors&Textlines/colors_and_textlines.dart';
+import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
 
 class TakePictureScreen extends StatefulWidget {
