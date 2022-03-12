@@ -13,15 +13,17 @@ import 'colors&Textlines/colorsAndTextlines.dart'; //       {Key? key, this.widg
 // }
 var _controller = TextEditingController();
 
-class support extends StatelessWidget {
-  List widgetOptions;
+class Support extends StatelessWidget {
+  final List widgetOptions;
   // List screens;
-  final selectedIndex;
-  support({required this.widgetOptions, this.selectedIndex});
+  final int selectedIndex;
+  const Support(
+      {Key? key, required this.widgetOptions, required this.selectedIndex})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(height: 40),
+      const SizedBox(height: 40),
       Center(
         child: widgetOptions.elementAt(selectedIndex),
       ),
@@ -45,12 +47,12 @@ class support extends StatelessWidget {
       ),
       // screens.elementAt(selectedIndex)
       //
-      SizedBox(height: 40),
+      const SizedBox(height: 40),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(width: 210),
-          Container(
+          const SizedBox(width: 210),
+          SizedBox(
               width: 43,
               height: 43,
               child: Stack(children: <Widget>[
@@ -60,14 +62,14 @@ class support extends StatelessWidget {
                     child: Container(
                         width: 43,
                         height: 43,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/images/facebook.png'),
                               fit: BoxFit.fitWidth),
                         )))
               ])),
-          SizedBox(width: 20),
-          Container(
+          const SizedBox(width: 20),
+          SizedBox(
               width: 43,
               height: 43,
               child: Stack(children: <Widget>[
@@ -77,7 +79,7 @@ class support extends StatelessWidget {
                     child: Container(
                         width: 43,
                         height: 43,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
                                   'assets/images/Instagram_Photo.png'),
@@ -86,29 +88,29 @@ class support extends StatelessWidget {
               ]))
         ],
       ),
-      SizedBox(height: 40),
+      const SizedBox(height: 40),
       Container(
         // width: 340,
         // height: 150,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         color: primaryWhite,
         child: Column(
           children: [
-            Text('Contact Us'),
-            SizedBox(height: 40),
+            const Text('Contact Us'),
+            const SizedBox(height: 40),
             TextField(
                 controller: _controller,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Type Here',
                 ),
                 maxLines: 5,
                 minLines: 3),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Container(
               height: 40,
               width: 300,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(4),
                   topRight: Radius.circular(4),
@@ -118,11 +120,11 @@ class support extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  print("send message");
+                  debugPrint("send message");
                   _controller.clear();
                 },
                 style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     backgroundColor: primaryBlue),
                 child: const Text('Send'),
               ),

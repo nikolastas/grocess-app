@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'Profile.dart';
 
 import 'dart:async';
-import 'package:camera/camera.dart';
 
 import 'colors&Textlines/colorsAndTextlines.dart';
 
@@ -45,14 +44,18 @@ class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key, required this.camera}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() =>
-      _MyStatefulWidgetState(camera: camera);
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  final CameraDescription camera;
+  late CameraDescription camera;
+  @override
+  void initState() {
+    super.initState();
+    camera = widget.camera;
+  }
 
-  _MyStatefulWidgetState({required this.camera});
+  // _MyStatefulWidgetState({required this.camera});
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 12,
@@ -71,7 +74,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         widgetOptions: _widgetOptions,
         selectedIndex: 3,
         paidStatus: paidStatus),
-    support(widgetOptions: _widgetOptions, selectedIndex: 4)
+    Support(widgetOptions: _widgetOptions, selectedIndex: 4)
   ];
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
@@ -101,7 +104,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       _selectedIndex = index;
     });
     if (index == 2) {
-      print("i am the camera tab");
+      debugPrint("i am the camera tab");
     }
   }
 

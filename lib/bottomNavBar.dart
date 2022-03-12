@@ -1,9 +1,12 @@
+import 'package:first_app_figma/colors&Textlines/colorsAndTextlines.dart';
 import 'package:flutter/material.dart';
 
 class BottomMenu extends StatelessWidget {
-  final selectedIndex;
-  ValueChanged<int> onClicked;
-  BottomMenu({this.selectedIndex, required this.onClicked});
+  final int selectedIndex;
+  final ValueChanged<int> onClicked;
+  const BottomMenu(
+      {Key? key, required this.selectedIndex, required this.onClicked})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -35,7 +38,7 @@ class BottomMenu extends StatelessWidget {
         ),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Color.fromARGB(255, 140, 187, 241),
+      selectedItemColor: primaryBlue,
       onTap: onClicked,
     );
   }
