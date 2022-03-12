@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 import 'package:table_calendar/table_calendar.dart';
 import 'colors&Textlines/colorsAndTextlines.dart';
@@ -55,7 +54,7 @@ class _callendarState extends State<callendar> {
     var width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Column(children: [
-        SizedBox(height: height * 0.02),
+        SizedBox(height: height * 0.05),
         Center(
           child: widget.widgetOptions.elementAt(widget.selectedIndex),
         ),
@@ -129,8 +128,8 @@ class _callendarState extends State<callendar> {
         ),
         SizedBox(height: height * 0.02),
         Container(
-          width: 388,
-          height: height * 0.3,
+          width: width * 0.95,
+          height: height * 0.15,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(23),
@@ -166,7 +165,8 @@ class _callendarState extends State<callendar> {
                   TextButton(
                     onPressed: () {
                       setState(() {
-                        money = RandomMoneyGenerator();
+                        money = RandomMoneyGenerator(
+                            selectedDate1, selectedDate2, 42);
                       });
                     },
                     style: TextButton.styleFrom(
@@ -178,46 +178,47 @@ class _callendarState extends State<callendar> {
                 ],
               ),
               SizedBox(height: height * 0.02),
-              Container(
-                  width: 380,
-                  height: 80,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(23),
-                      topRight: Radius.circular(23),
-                      bottomLeft: Radius.circular(23),
-                      bottomRight: Radius.circular(23),
-                    ),
-                    color: primaryWhite,
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 20),
-                      Text(
-                          "From ${ChangeDayFormat(selectedDate1)} to ${ChangeDayFormat(selectedDate2)} you spent:"),
-                      const SizedBox(width: 20),
-                      Container(
-                        height: 70,
-                        width: 70,
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(90),
-                            topRight: Radius.circular(90),
-                            bottomLeft: Radius.circular(90),
-                            bottomRight: Radius.circular(90),
-                          ),
-                          color: Colors.deepPurple,
-                        ),
-                        child: Text('$money',
-                            style: const TextStyle(color: Colors.white)),
-                      )
-                    ],
-                  ))
             ],
           ),
-        )
+        ),
+        SizedBox(height: height * 0.02),
+        Container(
+            width: 380,
+            height: 80,
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(23),
+                topRight: Radius.circular(23),
+                bottomLeft: Radius.circular(23),
+                bottomRight: Radius.circular(23),
+              ),
+              color: primaryWhite,
+            ),
+            child: Row(
+              children: [
+                const SizedBox(width: 20),
+                Text(
+                    "From ${ChangeDayFormat(selectedDate1)} to ${ChangeDayFormat(selectedDate2)} you spent:"),
+                const SizedBox(width: 20),
+                Container(
+                  height: 70,
+                  width: 70,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(90),
+                      topRight: Radius.circular(90),
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90),
+                    ),
+                    color: Colors.deepPurple,
+                  ),
+                  child: Text('$money',
+                      style: const TextStyle(color: Colors.white)),
+                )
+              ],
+            ))
       ]),
     );
   }
@@ -228,7 +229,13 @@ String ChangeDayFormat(date) {
 }
 
 //TODO: create a more realistic generator
-int RandomMoneyGenerator() {
-  var rng = Random();
-  return rng.nextInt(100);
+int RandomMoneyGenerator(DateTime sd1, DateTime sd2, int mon) {
+  if (sd1.isBefore(DateTime.now()) && sd2.isAfter(sd1)) {
+    return mon;
+  } else if (sd1.isBefore(DateTime.now().add(const Duration(days: 4))) &&
+      sd2.isAfter(sd1)) {
+    return mon + 10;
+  } else {
+    return 0;
+  }
 }
