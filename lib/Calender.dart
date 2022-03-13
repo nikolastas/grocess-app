@@ -129,7 +129,7 @@ class _callendarState extends State<callendar> {
         SizedBox(height: height * 0.02),
         Container(
           width: width * 0.95,
-          height: height * 0.15,
+          height: height * 0.16,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(23),
@@ -230,11 +230,8 @@ String ChangeDayFormat(date) {
 
 //TODO: create a more realistic generator
 int RandomMoneyGenerator(DateTime sd1, DateTime sd2, int mon) {
-  if (sd1.isBefore(DateTime.now()) && sd2.isAfter(sd1)) {
+  if (sd1.isBefore(DateTime.now()) && sd2.isAfter(DateTime.now())) {
     return mon;
-  } else if (sd1.isBefore(DateTime.now().add(const Duration(days: 4))) &&
-      sd2.isAfter(sd1)) {
-    return mon + 10;
   } else {
     return 0;
   }
