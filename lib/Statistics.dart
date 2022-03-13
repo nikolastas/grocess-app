@@ -16,8 +16,8 @@ class statistics extends StatelessWidget {
     size = MediaQuery.of(context).size;
     height = size.height;
     width = size.width;
-    print("height is:$height");
-    print("width is:$width");
+    debugPrint("height is:$height");
+    debugPrint("width is:$width");
     return Column(children: [
       SizedBox(height: height * 0.05),
       Center(
@@ -28,17 +28,17 @@ class statistics extends StatelessWidget {
         child: Container(
             height: height / 5.74331550802,
             width: width / 2.19400711021,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(23),
                 topRight: Radius.circular(23),
                 bottomLeft: Radius.circular(23),
                 bottomRight: Radius.circular(23),
               ),
-              image: DecorationImage(
+              image: const DecorationImage(
                   fit: BoxFit.fill,
                   image: AssetImage('assets/images/logo.png')),
-              color: Color.fromRGBO(253, 253, 255, 1),
+              color: primaryWhite,
             )),
       ),
       SizedBox(height: height / 13.6218181818),
@@ -49,12 +49,10 @@ class statistics extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: height / 25),
-            const Text(
+            Text(
               'Statistics',
               style: TextStyle(
-                  color: Color(0xfffdfdff),
-                  fontSize: 24.0,
-                  fontFamily: 'OpenSans'),
+                  color: primaryWhite, fontSize: 24.0, fontFamily: 'OpenSans'),
             ),
             SizedBox(height: height / 31.2436363636),
             InkWell(
@@ -95,15 +93,15 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 1500kcal",
+                                  child: Text("You have bought 1500kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
-                                    borderRadius: BorderRadius.only(
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -125,12 +123,12 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
-                                  child: const Text("Back",
+                                              secondaryBlue)),
+                                  child: Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
                                 ),
                               ),
@@ -208,15 +206,15 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 1000kcal",
+                                  child: Text("You have bought 1000kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
-                                    borderRadius: BorderRadius.only(
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -238,7 +236,7 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
+                                              secondaryBlue)),
                                   child: const Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
@@ -268,9 +266,9 @@ class statistics extends StatelessWidget {
                             fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
                         textAlign: TextAlign.center,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color(0xfffceeca),
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: primaryYellow,
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7),
@@ -321,15 +319,15 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 2000kcal",
+                                  child: Text("You have bought 2000kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
-                                    borderRadius: BorderRadius.only(
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -351,12 +349,12 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
-                                  child: const Text("Back",
+                                              secondaryBlue)),
+                                  child: Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
                                 ),
                               ),
@@ -381,9 +379,9 @@ class statistics extends StatelessWidget {
                             fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
                         textAlign: TextAlign.center,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color(0xfffceeca),
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: primaryYellow,
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7),
@@ -434,15 +432,15 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 750kcal",
+                                  child: Text("You have bought 750kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
-                                    borderRadius: BorderRadius.only(
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -464,12 +462,12 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
-                                  child: const Text("Back",
+                                              secondaryBlue)),
+                                  child: Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
                                 ),
                               ),
@@ -494,9 +492,9 @@ class statistics extends StatelessWidget {
                             fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
                         textAlign: TextAlign.center,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color(0xfffceeca),
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: primaryYellow,
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7),
@@ -547,15 +545,15 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 100kcal",
+                                  child: Text("You have bought 100kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
-                                    borderRadius: BorderRadius.only(
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -577,12 +575,12 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
-                                  child: const Text("Back",
+                                              secondaryBlue)),
+                                  child: Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
                                 ),
                               ),
@@ -607,8 +605,8 @@ class statistics extends StatelessWidget {
                             fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
                         textAlign: TextAlign.center,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color(0xfffceeca),
+                      decoration: BoxDecoration(
+                        color: primaryYellow,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
@@ -660,14 +658,14 @@ class statistics extends StatelessWidget {
                                 child: Container(
                                   height: height / 30,
                                   width: width / 1.5,
-                                  child: const Text("You have bought 300kcal",
+                                  child: Text("You have bought 300kcal",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
-                                  decoration: const BoxDecoration(
-                                    color: const Color(0xff479afa),
+                                  decoration: BoxDecoration(
+                                    color: secondaryBlue,
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
@@ -690,12 +688,12 @@ class statistics extends StatelessWidget {
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              const Color(0xff479afa))),
-                                  child: const Text("Back",
+                                              secondaryBlue)),
+                                  child: Text("Back",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontFamily: 'OpenSans',
-                                          color: Colors.black),
+                                          color: secondaryBlack),
                                       textAlign: TextAlign.center),
                                 ),
                               ),
@@ -720,8 +718,8 @@ class statistics extends StatelessWidget {
                             fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
                         textAlign: TextAlign.center,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color(0xfffceeca),
+                      decoration: BoxDecoration(
+                        color: primaryYellow,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
