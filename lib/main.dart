@@ -78,23 +78,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   ];
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Statistics',
+      '',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Calendar',
+      '',
       style: optionStyle,
     ),
     Text(
-      'Index 2: Camera',
+      '',
       style: optionStyle,
     ),
     Text(
-      'Index 3: Profile',
+      '',
       style: optionStyle,
     ),
     Text(
-      'Index 4: Support',
+      '',
       style: optionStyle,
     ),
   ];

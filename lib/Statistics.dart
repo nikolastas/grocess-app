@@ -1,178 +1,27 @@
-// ignore: file_names
-// ignore_for_file: camel_case_types
-
+import 'dart:ui';
+//import 'products.dart';
 import 'package:flutter/material.dart';
 import 'colors&Textlines/colorsAndTextlines.dart';
 
-class Products {
-  String type;
-  String description;
-  String quantity;
-  String photo;
-  Products(
-      {required this.type,
-      required this.description,
-      required this.quantity,
-      required this.photo});
-}
-
-class statistics extends StatefulWidget {
-  late List widgetOptions;
+class statistics extends StatelessWidget {
+  List widgetOptions;
+  var size, height, width;
   // List screens;
-  // ignore: prefer_typing_uninitialized_variables
-  late final selectedIndex;
-  statistics({Key? key, required this.widgetOptions, this.selectedIndex})
-      : super(key: key);
-  @override
-  _StatsState createState() => _StatsState();
-}
 
-class _StatsState extends State<statistics> {
-  List<Products> product = [
-    Products(
-        type: 'dairy',
-        description: 'blabla',
-        quantity: '50',
-        photo: 'assets/images/dairy.png'),
-    Products(
-        type: 'fish',
-        description: 'blabla',
-        quantity: '100',
-        photo: 'assets/images/dairy.png'),
-    Products(
-        type: 'dairy',
-        description: 'blabla',
-        quantity: '10',
-        photo: 'assets/images/dairy.png')
-  ];
-
-  Widget productTemplate(Products product, height, width) {
-    return InkWell(
-      onTap: () {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return Dialog(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Container(
-                  height: height / 1.75,
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(height: 1),
-                      Text(product.type,
-                          style: const TextStyle(
-                              fontSize: 16.0, fontFamily: 'OpenSans'),
-                          textAlign: TextAlign.center),
-                      Image.asset(
-                        product.photo,
-                        width: MediaQuery.of(context).size.width,
-                        height: height / 5.20727272727,
-                        fit: BoxFit.fitWidth,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          product.description,
-                          style: const TextStyle(
-                              fontSize: 14.0, fontFamily: 'OpenSans'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: height / 30,
-                          width: width / 1.5,
-                          child: Text(product.quantity,
-                              style: const TextStyle(
-                                  fontSize: 16.0,
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.black),
-                              textAlign: TextAlign.center),
-                          decoration: const BoxDecoration(
-                            color: const Color(0xff479afa),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(7),
-                              topRight: Radius.circular(7),
-                              bottomLeft: Radius.circular(7),
-                              bottomRight: Radius.circular(7),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            MediaQuery.of(context).size.width / 2.0,
-                            0,
-                            MediaQuery.of(context).size.width / 30.0,
-                            0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  const Color(0xff479afa))),
-                          child: const Text("Back",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.black),
-                              textAlign: TextAlign.center),
-                        ),
-                      ),
-                      SizedBox(height: height / 260.363636364)
-                    ],
-                  ),
-                ),
-              );
-            });
-      },
-      child: Row(
-        children: [
-          SizedBox(width: width * 0.01),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              height: height / 19.5272727273,
-              width: width / 13.30909090909,
-              child: Text(
-                product.type,
-                style: TextStyle(
-                    fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
-                textAlign: TextAlign.center,
-              ),
-              decoration: const BoxDecoration(
-                color: Color(0xfffceeca),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(7),
-                  topRight: Radius.circular(7),
-                  bottomLeft: Radius.circular(7),
-                  bottomRight: Radius.circular(7),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  get selectedIndex => null;
-  get widgetOptions => null;
-  // ignore: dead_code
+  final selectedIndex;
+  statistics({required this.widgetOptions, this.selectedIndex});
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var height = size.height;
-    var width = size.width;
-
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+    print("height is:$height");
+    print("width is:$width");
     return Column(children: [
-      SizedBox(height: height / 15.6218181818),
+      SizedBox(height: height * 0.05),
       Center(
-        child: widget.widgetOptions.elementAt(widget.selectedIndex),
+        child: widgetOptions.elementAt(selectedIndex),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -195,11 +44,8 @@ class _StatsState extends State<statistics> {
       SizedBox(height: height / 13.6218181818),
       Container(
         height: height / 1.9,
-        width: width * 0.99,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: secondaryGrey,
-        ),
+        width: width,
+        color: secondaryGrey,
         child: Column(
           children: [
             SizedBox(height: height / 25),
@@ -211,11 +57,684 @@ class _StatsState extends State<statistics> {
                   fontFamily: 'OpenSans'),
             ),
             SizedBox(height: height / 31.2436363636),
-            Column(
-              children: product
-                  .map((product) => productTemplate(product, width, height))
-                  .toList(),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.75,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Dairy",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/dairy.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''Dairy products or milk products are food products made from (or containing) milk. Dairy products include common grocery store food items such as yogurt, cheese and butter.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 1500kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 1.30909090909,
+                      child: const Text(
+                        "Dairy",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            SizedBox(height: height / 78.1090909091),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.75,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Vegetables",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/vegetables.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''Vegetables are parts of plants that are consumed by humans or other animals as food. The original meaning is still commonly used and is applied to plants collectively to refer to all edible plant matter, including the flowers, fruits, stems, leaves, roots, and seeds.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 1000kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 1.8,
+                      child: const Text(
+                        "Vegetables",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: height / 78.1090909091),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.75,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Meat",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/meat.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''Meat is animal flesh that is eaten as food.Meat is mainly composed of water, protein, and fat. It is edible raw, but is normally eaten after it has been cooked and seasoned or processed in a variety of ways.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 2000kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 1.2,
+                      child: const Text(
+                        "Meat",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: height / 78.1090909091),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.75,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Fish",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/fish.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''Many species of fish are caught by humans and consumed as food in virtually all regions around the world. Fish has been an important dietary source of protein and other nutrients throughout human history.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 750kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 2.4,
+                      child: const Text(
+                        "Fish",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: height / 78.1090909091),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.3,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Drinks",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/drinks.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''A drink (or beverage) is a liquid intended for human consumption. In addition to their basic function of satisfying thirst, drinks play important roles in human culture. Common types of drinks include plain drinking water, milk, juice, smoothies and soft drinks. Traditionally warm beverages include coffee, tea, and hot chocolate. Caffeinated drinks that contain the stimulant caffeine have a long history.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 100kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 4,
+                      child: const Text(
+                        "Drinks",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: height / 78.1090909091),
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: Container(
+                          height: height / 1.75,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(height: 1),
+                              const Text("Fruits",
+                                  style: TextStyle(
+                                      fontSize: 16.0, fontFamily: 'OpenSans'),
+                                  textAlign: TextAlign.center),
+                              Image.asset(
+                                'assets/images/fruit.png',
+                                width: MediaQuery.of(context).size.width,
+                                height: height / 5.20727272727,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '''Fruits are the sweet and fleshy product of a tree or other plant that contains seed and can be eaten as food.''',
+                                  style: TextStyle(
+                                      fontSize: 14.0, fontFamily: 'OpenSans'),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: height / 30,
+                                  width: width / 1.5,
+                                  child: const Text("You have bought 300kcal",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                  decoration: const BoxDecoration(
+                                    color: const Color(0xff479afa),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(7),
+                                      topRight: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                      bottomRight: Radius.circular(7),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width / 2.0,
+                                    0,
+                                    MediaQuery.of(context).size.width / 30.0,
+                                    0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xff479afa))),
+                                  child: const Text("Back",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                              SizedBox(height: height / 260.363636364)
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Row(
+                children: [
+                  SizedBox(width: width / 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: height / 19.5272727273,
+                      width: width / 2.0,
+                      child: const Text(
+                        "Fruits",
+                        style: TextStyle(
+                            fontSize: 16.0, fontFamily: 'OpenSans', height: 2),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xfffceeca),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          topRight: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                          bottomRight: Radius.circular(7),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: height / 78.1090909091),
           ],
         ),
       ),
