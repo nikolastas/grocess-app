@@ -26,8 +26,8 @@ class statistics extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-            height: height / 5.74331550802,
-            width: width / 2.19400711021,
+            height: 136.0,
+            width: 179.0,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(23),
@@ -607,7 +607,7 @@ class statistics extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: primaryYellow,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7),
@@ -640,7 +640,7 @@ class statistics extends StatelessWidget {
                                       fontSize: 16.0, fontFamily: 'OpenSans'),
                                   textAlign: TextAlign.center),
                               Image.asset(
-                                'assets/images/fruit.png',
+                                'assets/images/fruit.jpg',
                                 width: MediaQuery.of(context).size.width,
                                 height: height / 5.20727272727,
                                 fit: BoxFit.fitWidth,
@@ -666,7 +666,7 @@ class statistics extends StatelessWidget {
                                       textAlign: TextAlign.center),
                                   decoration: BoxDecoration(
                                     color: secondaryBlue,
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(7),
                                       topRight: Radius.circular(7),
                                       bottomLeft: Radius.circular(7),
@@ -720,7 +720,7 @@ class statistics extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: primaryYellow,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(7),
                           topRight: Radius.circular(7),
                           bottomLeft: Radius.circular(7),
